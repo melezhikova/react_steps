@@ -28,22 +28,25 @@ function StepsForm () {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        console.log(dataList);
         const newData = {
             id: dateValue (form.date),
             date: form.date,
             distance: form.distance
         }
         const index = dataList.findIndex((item) => item.id === newData.id);
-        console.log(index); 
         setList(prevList => {
             if (index === -1) {
                 prevList.push(newData);
-                prevList.sort((a, b) => {return a.id - b.id}).reverse();
+                prevList
+                    .sort((a, b) => {return a.id - b.id})
+                    .reverse();
             } else {
                 prevList[index].distance = String(prevList[index].distance * 1 + newData.distance * 1)
             }
+            return [...prevList];
         })
+
+        setForm({date: '', distance: ''});  
         console.log(dataList);
     }
 
@@ -56,7 +59,7 @@ function StepsForm () {
         } 
         setList(prevList => {
             prevList.splice(index, 1);
-            return prevList;
+            return [...prevList];
         })
         console.log(dataList);
     }
