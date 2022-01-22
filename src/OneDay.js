@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
 function OneDay (props) {
-    console.log(props)
     const { item, delDay } = props;
 
     return (

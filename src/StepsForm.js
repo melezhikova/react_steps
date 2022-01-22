@@ -47,12 +47,10 @@ function StepsForm () {
         })
 
         setForm({date: '', distance: ''});  
-        console.log(dataList);
     }
 
     const clickToDelete = (evt) => {
         const index = dataList.findIndex((item) => item.id === evt.target.dataset.id);
-        console.log(index); 
         if (index === -1) {
             console.log('Что-то пошло не так')
             return;
@@ -61,7 +59,6 @@ function StepsForm () {
             prevList.splice(index, 1);
             return [...prevList];
         })
-        console.log(dataList);
     }
 
     return (
@@ -70,11 +67,11 @@ function StepsForm () {
                 <div className="formBox">
                     <div className="inputBox">
                         <label htmlFor="date">Дата (ДД.ММ.ГГ)</label>
-                        <input id="date" name="date" onChange={handleChange} />
+                        <input id="date" name="date" onChange={handleChange} value={form.date} />
                     </div>
                     <div className="inputBox">
                         <label htmlFor="distance">Пройдено км</label>
-                        <input id="distance" name="distance" onChange={handleChange} />
+                        <input id="distance" name="distance" onChange={handleChange} value={form.distance} />
                     </div>
                     <button className="btn" type="submit">Ok</button>
                 </div>
