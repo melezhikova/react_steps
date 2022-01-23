@@ -33,6 +33,10 @@ function StepsForm () {
             date: form.date,
             distance: form.distance
         }
+        if (isNaN(newData.id)) {
+            console.log('id некорректен');
+            return;
+        }
         const index = dataList.findIndex((item) => item.id === newData.id);
         setList(prevList => {
             if (index === -1) {
